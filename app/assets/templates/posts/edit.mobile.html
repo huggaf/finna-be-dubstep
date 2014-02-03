@@ -1,0 +1,39 @@
+    <form ng-submit="post.save()">
+      <div class="title" style="background-color:{{post.editElement.color}}">
+        <input type="text" ng-model="post.editElement.title" class="form-control">
+      </div>
+
+      <div class="content quick-effect">
+        <div class="toolbar" ng-show="user.id == post.author.id">
+
+          <div class="tools" ng-show="post.edit">
+            <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="post.editElement.color = color"></i>
+
+            <i class="glyphicon" ng-class="{'glyphicon-eye-close': !post.editElement.visible, 'glyphicon-eye-open': post.editElement.visible}" ng-click="post.editElement.visible = !post.editElement.visible"></i>
+
+            <i class="glyphicon glyphicon-trash" ng-click="post.destroy()"></i>
+          </div>
+
+        </div>
+
+        <div ng-show="post.edit">
+          <div class="alert alert-info" ng-hide="post.editElement.visible">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            O Post não será publicado. Para publicar clique na ferramenta <i class="glyphicon glyphicon-eye-close"></i>
+          </div>
+
+          <div class="alert alert-info" ng-show="post.editElement.visible">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            O Post será publicado. Para não publicar clique na ferramenta <i class="glyphicon glyphicon-eye-open"></i>
+          </div>
+        </div>
+
+        <textarea class="form-control" ng-model="post.editElement.text"></textarea>
+        <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">Sintaxe do markdown</a>
+      </div>
+
+      <div style="padding:20px">
+        <button class="btn btn-success">Salvar</button>
+        <a class="btn btn-default" ng-click="post.cancelEditForm()">Cancelar</a>
+      </div>
+    </form>

@@ -1,0 +1,120 @@
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  #device{background-color: purple }
+
+  .effect{
+    transition:         none;
+    -moz-transition:    none;
+    -webkit-transition: none;
+    -o-transition:      none;
+  }
+
+  .quick-effect{
+    transition:         none;
+    -moz-transition:    none;
+    -webkit-transition: none;
+    -o-transition:      none;
+  }
+
+  .slow-effect{
+    transition:         none;
+    -moz-transition:    none;
+    -webkit-transition: none;
+    -o-transition:      none;
+  }
+
+
+  .btn{border-radius: 0;}
+
+  body{
+    padding:30px 0;
+  }
+
+  header{
+    height:100px;
+    h1{
+      display: block;
+      left:0;
+      top: 30px;
+      width:100%;
+      position:absolute;
+      text-align: center
+    }
+
+    a,i.glyphicon{
+      display: inline-block;
+      /*position: absolute;*/
+      top: 70px;
+      border-radius: 0;
+      color: rgba(127,127,127,0.9);
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      margin: 0;
+    }
+
+    i.glyphicon:hover{
+      color: rgb(0,0,0);
+    }
+  }
+
+  section.post{
+    border-radius: 0;
+    margin-bottom: 5px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:    none;
+    box-shadow:         none;
+
+    div.title{
+      padding:20px;
+      background: url('/assets/noisy.png');
+      box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.35);
+      text-shadow: rgba(255,255,255,0.4) -1px 1px 0;
+
+      h1{
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+      }
+    }
+
+    div.content{
+      height:0;
+
+      div.alert{
+        font-size: 15px;
+      }
+
+      div.text{ padding-top: 10px; font-size: 15px; }
+      div.toolbar{
+        margin:10px 0;
+        font-size: 1.5em;
+        display: block;
+        text-align: center;
+        clear:both;
+        max-height: none;
+
+
+        i.glyphicon{
+          margin: 0 5px;
+        }
+
+        div.author{
+          clear:both;
+        }
+      }
+    }
+  }
+  section.post.selected{
+    div.content{
+      margin: 0 20px 20px 20px;
+      height: auto;
+      max-height: none;
+      overflow: auto;
+    }
+  }
+
+
+}
+

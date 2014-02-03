@@ -1,0 +1,16 @@
+    <div class="title" style="background-color:{{post.color}}" ng-swipe-left="post.destroy()" ng-swipe-right="post.editForm()">
+
+
+
+
+
+      <h1 ng-click="post.toggleSelect()" ng-bind="post.title"></h1>
+
+      <div class="author effect">
+        <span class="info">&dash; {{post.author.name}} em {{post.created_at|date:'dd/MM/yyyy'}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="text" ng-bind-html="post.mobile_text|markdown"></div>
+    </div>

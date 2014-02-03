@@ -1,0 +1,43 @@
+  <section class="post selected" ng-controller="NewPostCtrl">
+    <form ng-submit="post.save()" ng-class="{'invisble': !post.visible}">
+      <div class="title" style="background-color:{{post.color}}">
+        <p>
+          <label class="sr-only" for="new-post-title">Título:</label>
+          <input placeholder="Título" id="new-post-title" type="text" ng-model="post.title" class="form-control">
+        </p>
+      </div>
+
+      <div class="content quick-effect">
+        <div class="toolbar">
+
+          <div class="tools">
+            <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="post.color = color"></i>
+            <i class="glyphicon" ng-class="{'glyphicon-eye-close': !post.visible, 'glyphicon-eye-open': post.visible}" ng-click="post.visible = !post.visible"></i>
+          </div>
+
+        </div>
+
+        <div class="alert alert-info" ng-hide="post.visible">
+          <i class="glyphicon glyphicon-info-sign"></i>
+          O Post não será publicado. Para publicar clique na ferramenta <i class="glyphicon glyphicon-eye-close"></i>
+        </div>
+
+        <div class="alert alert-info" ng-show="post.visible">
+          <i class="glyphicon glyphicon-info-sign"></i>
+          O Post será publicado. Para não publicar clique na ferramenta <i class="glyphicon glyphicon-eye-open"></i>
+        </div>
+
+        <div>
+          <label class="sr-only" for="new-post-text">Texto:</label>
+          <textarea placeholder="Texto" id="new-post-text" class="form-control" ng-model="post.text"></textarea>
+          <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">Sintaxe do markdown</a>
+        </div>
+
+      </div>
+
+      <div style="padding:20px">
+        <button class="btn btn-success">Salvar</button>
+        <a href="/" class="btn btn-default">Cancelar</a>
+      </div>
+    </form>
+  </section>

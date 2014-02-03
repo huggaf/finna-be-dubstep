@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="myBlogApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <meta name="description" content="Le Blog - Canal de notícias">
+  <meta name="author" content="Pablo Targa">
+  <meta name="keywords" content="blog,noticias,desafio">
+  <title>Blog</title>
+
+  <!-- le css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/application.css">
+
+  <!-- le gambs for early IEs -->
+  <!--[if lte IE 8]>
+    <script>
+      document.createElement('ng-include');
+      document.createElement('ng-pluralize');
+      document.createElement('ng-view');
+    </script>
+  <![endif]-->
+
+  <!-- le fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <section id="device"></section>
+  <header>
+    <a href="#" title="Buscar"><i class="glyphicon glyphicon-search quick-effect"></i></a>
+    <h1><a href="/">le Blog</a></h1>
+    <a ng-show="user" title="Adicionar" alt="Adicionar" href="/new-post"><i class="glyphicon glyphicon-plus quick-effect"></i></a>
+    <a ng-hide="user" title="Entrar" alt="Entrar" href="#" ng-click="openLogin()"><i class="glyphicon glyphicon-log-in quick-effect"></i></a>
+  </header>
+
+  <section class="search-form">
+    <p>
+      <input type="text" ng-model="search.text">
+      <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="search.color = color"></i>
+    </p>
+  </section>
+
+  <section id="login-form" ng-controller="LoginCtrl">
+    <form ng-submit="sendForm()" ng-hide="user || !showLogin">
+      <div class="alert alert-danger" ng-repeat="error in errors">
+        <i class="glyphicon glyphicon-remove-sign"></i>
+        {{error}}
+      </div>
+
+      <div class="alert alert-success" ng-repeat="message in messages">
+        <i class="glyphicon glyphicon-ok-sign"></i>
+        <span ng-bind-html="message"></span>
+      </div>
+
+      <p ng-show="login.type == 'signin'">
+        <label class="sr-only" for="login-name">Nome:</label>
+        <input class="form-control" placeholder="Nome" id="login-name" type="text" ng-model="login.name">
+      </p>
+
+      <p>
+        <label class="sr-only" for="login-email">Email:</label>
+        <input class="form-control" placeholder="Email" id="login-email" type="email" ng-model="login.email">
+      </p>
+
+      <p ng-hide="login.type == 'remember'">
+        <label class="sr-only" for="login-password">Senha:</label>
+        <input class="form-control" placeholder="Senha" id="login-password" type="password" ng-model="login.password">
+      </p>
+
+      <p ng-show="login.type == 'signin'">
+        <label class="sr-only" for="login-password-confirmation">Confirme:</label>
+        <input class="form-control" placeholder="Confirme" id="login-password-confirmation" type="password" ng-model="login.password_confirmation">
+      </p>
+
+      <p>
+        <span class="link" ng-click="login.type = 'login'"    ng-show="login.type == 'signin'">Já possuo conta</span>
+        <span class="link" ng-click="login.type = 'signin'"   ng-show="login.type == 'login'">Ainda não tenho conta</span>
+        <span class="link" ng-click="login.type = 'remember'" ng-show="login.type == 'login'">| Não lembro a senha!</span>
+        <span class="link" ng-click="login.type = 'login'"    ng-show="login.type == 'remember'">Acho que lembrei!</span>
+      </p>
+
+
+      <p>
+        <button ng-hide="logging" class="btn btn-block btn-lg btn-info" ng-bind="btnTexts[login.type]"></button>
+        <div ng-show="logging" class="text-center"><img src="/assets/loading.gif"> Carregando...</div>
+      </p>
+    </form>
+
+
+    <div class="credential-info" ng-show="user">
+      Bem vindo {{user.name}}, <a href="#" ng-click="logout()">sair</a>
+    </div>
+  </section>
+
+  <section ng-view></section>
+
+  <!-- le javascript -->
+  <script type="text/javascript" src="/assets/application.js"></script>
+
+</body>
+</html>

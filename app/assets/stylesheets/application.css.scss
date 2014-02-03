@@ -1,0 +1,251 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body{
+  font-family: lato;
+  font-size: 18px;
+  font-weight: 300;
+  color: #333;
+  background-color: #e7eef4;
+}
+
+.alert{
+  i.glyphicon:first-of-type{
+    margin-right:7px;
+  }
+}
+
+.effect{
+  transition:         all 0.5s ease-in-out;
+  -moz-transition:    all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition:      all 0.5s ease-in-out;
+}
+
+.quick-effect{
+  transition:         all 0.25s ease-in-out;
+  -moz-transition:    all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition:      all 0.25s ease-in-out;
+}
+
+.slow-effect{
+  transition:         all 1.5s ease-in-out;
+  -moz-transition:    all 1.5s ease-in-out;
+  -webkit-transition: all 1.5s ease-in-out;
+  -o-transition:      all 1.5s ease-in-out;
+}
+.search-form{
+  display:none;
+}
+
+header{
+    margin: 10px 0 40px;
+    text-align: center;
+
+  h1{
+    font-family: 'Lily Script One', cursive;
+    font-size: 4em;
+    display: inline-block;
+    a{         text-decoration: none; color: inherit; }
+    a:hover{   text-decoration: none; color: inherit; }
+    a:active{  text-decoration: none; color: inherit; }
+    a:visited{ text-decoration: none; color: inherit; }
+  }
+
+  i.glyphicon{
+    font-size: 2em;
+    padding: 10px;
+    border-radius: 100%;
+    color: #e7eef4;
+    background-color: rgba(127,127,127,0.9);
+    cursor: pointer;
+    border: rgba(127,127,127,0.9) 3px solid;
+  }
+
+  i.glyphicon:hover{
+    color: rgba(127,127,127,0.9);
+    background-color: #e7eef4;
+  }
+
+  i.glyphicon-search{ margin-right:200px; }
+  i.glyphicon-plus{ margin-left:200px; }
+  i.glyphicon-log-in{ margin-left:200px; }
+
+/*  i.glyphicon:first-of-type{ margin-right:200px; }
+  i.glyphicon:last-of-type{ margin-left: 200px; }
+*/
+}
+
+#login-form{
+  div.credential-info{
+    text-align: center;
+    margin:20px 0;
+  }
+
+  p{
+    span.link{
+      cursor: pointer;
+    }
+    span.link:hover{
+      color: red;
+    }
+  }
+}
+
+section.post{
+  border-radius: 10px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+  overflow: hidden;
+  background: url('/assets/noisy.png') #eee;
+
+  form.invisble{
+    opacity: 0.8;
+  }
+
+  div.title{
+    padding:20px;
+    background: url('/assets/noisy.png');
+    box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.35);
+    text-shadow: rgba(255,255,255,0.4) -1px 1px 2px;
+
+    h1{
+      cursor: pointer;
+      margin:0;
+      font-weight: bold;
+    }
+
+    i.edit-btn{
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      font-size: 18px;
+      top:-160px;
+      margin-bottom: -80px;
+      padding:5px;
+      text-align: right;
+      background-color: inherit;
+      border-radius: 6px;
+      border:dashed 3px rgba(127,127,127,0.5);
+      opacity: 0.5;
+    }
+
+    i.edit-btn:hover{
+      opacity: 1.0;
+    }
+
+  }
+
+  div.title:hover{
+    i.edit-btn{ top:-20px; }
+  }
+
+  div.content{
+    margin: 0 20px;
+    text-align: justify;
+    max-height:0px;
+    overflow: hidden;
+
+    div.text{ padding-top: 10px; }
+
+    div.toolbar{
+      margin:20px 0;
+      font-size: 2em;
+
+      div.tools{
+        display: inline-block;
+
+        i.glyphicon{
+          cursor: pointer;
+          margin: 0 5px;
+        }
+      }
+
+    }
+
+    textarea{
+      width:100%;
+      min-height: 300px;
+      max-height: 600px;
+    }
+
+  }
+
+  div.author{
+    font-size: 13px;
+    margin:5px;
+    text-shadow: rgba(255,255,255,0.4) -1px 1px 2px;
+    cursor: default;
+  }
+
+  div.toolbar i.glyphicon-ok{         color: #5cb85c;}
+  div.toolbar i.glyphicon-remove{     color: #d9534f;}
+  div.toolbar i.glyphicon-eye-open{   color: #999999;}
+  div.toolbar i.glyphicon-eye-close{  color: #999999;}
+  div.toolbar i.glyphicon-trash{      color: #999999;}
+}
+
+section.post.selected{
+  div.content{
+    margin: 0 20px 20px 20px;
+    max-height:2000px;
+    overflow: auto;
+  }
+}
+
+
+#device{ display: block;height:20px;width: 40px;background-color: #BBB }
+
+/* Large desktop */
+@media (min-width: 979px) {
+  #device{ background-color: red }
+  body{
+    padding:30px 200px;
+  }
+}
+
+/* Large desktop */
+/*@media (min-width:979px) and (max-width:1024px) {
+  #device{background-color: blue }
+  body{
+    padding:30px 100px;
+  }
+}*/
+
+/* Portrait tablet to landscape and desktop */
+/*@media (min-width: 768px) and (max-width: 979px) {
+  #device{background-color: green }
+
+  body{
+    padding:30px 50px;
+  }
+}*/
+
+/* Landscape phone to portrait tablet */
+/*@media (max-width: 767px) {
+  #device{background-color: yellow }
+
+  body{
+    padding:30px 20px;
+  }
+}*/
+
+
+
+
+
+

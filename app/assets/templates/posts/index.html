@@ -1,0 +1,17 @@
+<section ng-controller="PostsCtrl" when-scrolled="nextPage()">
+
+
+  <div>
+    <img src="/assets/Swipe_Right.png"> editar
+    <img src="/assets/Swipe_Left.png"> excluir
+
+  </div>
+
+  <section class="post" ng-class="{'selected':post.selected}" ng-repeat="post in posts" ng-include="template(post)"></section>
+
+  <div ng-show="loadMore">
+    <button ng-hide="loadingPosts" class="btn btn-block btn-lg btn-info" ng-click="nextPage()">Carregar mais</button>
+    <div ng-show="loadingPosts" class="text-center"><img src="/assets/loading.gif"> Carregando...</div>
+  </div>
+</section>
+
