@@ -1,0 +1,18 @@
+    <div class="title" ng-style="article.getTitleStyle()">
+
+      <div class="edit-btn-container quick-effect">
+        <i                             ng-click="article.toggleSelect()" class="edit-btn effect glyphicon" ng-class="{'glyphicon-eye-open': !article.selected,'glyphicon-eye-close': article.selected}"></i>
+        <i ng-show="article.canEdit()"    ng-click="article.editForm()"     class="edit-btn effect glyphicon glyphicon-edit"></i>
+        <i ng-show="article.canDestroy()" ng-click="article.destroy()"      class="edit-btn effect glyphicon glyphicon-trash"></i>
+      </div>
+
+      <h1 ng-click="article.toggleSelect()" ng-bind="article.title"></h1>
+
+      <div class="author effect">
+        <span class="info">&dash; {{article.author.name}} em {{article.created_at|date:'dd/MM/yyyy'}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="text" ng-bind-html="(article.mobile_text||'')|markdown"></div>
+    </div>

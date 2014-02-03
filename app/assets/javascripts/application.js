@@ -14,33 +14,32 @@
 //= require 'lib/angular-route.min.js'
 //= require 'lib/angular-resource.min.js'
 //= require 'lib/angular-sanitize.min.js'
-//= require 'lib/angular-touch.min.js'
 //= require_self
 //= require_tree .
 
-var myBlogApp = angular.module('myBlogApp', ['ngSanitize', 'ngResource', 'ngRoute', 'ngTouch'],
+var myBlogApp = angular.module('myBlogApp', ['ngSanitize', 'ngResource', 'ngRoute'],
                                   ['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider,$locationProvider,$httpProvider){
 
   // javascript handle with urls, adding to historic
   $locationProvider.html5Mode(true);
 
   // routes
-  $routeProvider.when("/posts", {templateUrl: "/assets/posts/index.html", controller: PostsCtrl})
-      .when("/new-post", {templateUrl: "/assets/posts/new.html"})
-      .otherwise({redirectTo : '/posts' });
+  $routeProvider.when("/articles", {templateUrl: "/assets/articles/index.html", controller: ArticlesCtrl})
+      .when("/new-article", {templateUrl: "/assets/articles/new.html"})
+      .otherwise({redirectTo : '/articles' });
 
   // json header
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json';
 }]);
 
 myBlogApp.run(['$rootScope', 'UserResource', function($rootScope,UserResource){
-  $rootScope.colors = ["#428bca", "#5cb85c", "#5bc0de", "#f0ad4e", "#d9534f"];
+  $rootScope.colors = ["#d9534f", "#f0ad4e", "#5cb85c", "#428bca", "#5bc0de" ];
 
   $rootScope.loadMore = true;
   $rootScope.showLogin = false;
 
   $rootScope.search = {};
-  $rootScope.posts = [];
+  $rootScope.articles = [];
 
   $rootScope.user = null;
   UserResource.me(function(data){ $rootScope.user = data });

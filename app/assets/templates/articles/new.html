@@ -1,0 +1,40 @@
+  <section class="article selected" ng-controller="NewArticleCtrl">
+    <form ng-submit="save()">
+      <div class="title" ng-style="article.getTitleStyle()">
+        <div class="edit-btn-container quick-effect">
+          <i ng-click="save()"           class="edit-btn effect glyphicon glyphicon-ok" ></i>
+          <i ng-click="cancel();" class="edit-btn effect glyphicon glyphicon-remove"></i>
+        </div>
+
+        <p>
+          <label class="sr-only" for="new-article-title">Título:</label>
+          <input placeholder="Título" id="new-article-title" type="text" ng-model="article.title" class="form-control">
+        </p>
+
+        <p>
+          <label class="sr-only" for="new-article-url-thumb">Url Thumb:</label>
+          <input placeholder="Url Thumb" id="new-article-url-thumb" type="text" ng-model="article.thumb_url" class="form-control">
+        </p>
+
+      </div>
+
+      <div class="content quick-effect">
+        <div class="toolbar">
+
+          <div class="tools">
+            <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="article.color = color"></i>
+          </div>
+
+        </div>
+
+        <div>
+          <label class="sr-only" for="new-article-text">Texto:</label>
+          <textarea placeholder="Texto" id="new-article-text" class="form-control" ng-model="article.text"></textarea>
+          <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">Sintaxe do markdown</a>
+        </div>
+
+      </div>
+
+      <button class="sr-only">Salvar</button>
+    </form>
+  </section>

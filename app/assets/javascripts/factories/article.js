@@ -1,5 +1,5 @@
-myBlogApp.factory('PostResource', ['$resource', function($resource) {
-    return $resource('/api/posts/:id',
+myBlogApp.factory('ArticleResource', ['$resource', function($resource) {
+    return $resource('/api/articles/:id',
                           {id:'@id'},
                           { 'get':    {method:'GET'},
                             'save':   {method:'POST'},
@@ -10,7 +10,7 @@ myBlogApp.factory('PostResource', ['$resource', function($resource) {
 }]);
 
 
-myBlogApp.factory('Post', ["$rootScope", function($rootScope){
+myBlogApp.factory('Article', ["$rootScope", function($rootScope){
 
   return function(attributes){
     this.author      = attributes.author;
@@ -22,7 +22,7 @@ myBlogApp.factory('Post', ["$rootScope", function($rootScope){
     this.editElement = {};
 
     this.select = function(){
-      if($rootScope.posts.every(function(e){return e.unselect()})){
+      if($rootScope.articles.every(function(e){return e.unselect()})){
         this.selected = true;
 
         if($rootScope.isMobile)
@@ -51,10 +51,10 @@ myBlogApp.factory('Post', ["$rootScope", function($rootScope){
 
     this.editForm =  function(){
       this.select();
-      this.editElement = {title:    this.title,
-                          text:     this.text,
-                          visible:  this.visible,
-                          color:    this.color};
+      this.editElement = {title:     this.title,
+                          text:      this.text,
+                          thumb_url: this.thumb_url,
+                          color:     this.color};
       this.edit = true;
     }
 
@@ -72,36 +72,48 @@ myBlogApp.factory('Post', ["$rootScope", function($rootScope){
     }
 
     this.hasChanges = function(){
-      return !( this.color    === this.editElement.color &&
-                this.visible  === this.editElement.visible &&
-                this.title    === this.editElement.title &&
-                this.text     === this.editElement.text)
+      return !( this.color     === this.editElement.color &&
+                this.title     === this.editElement.title &&
+                this.thumb_url === this.editElement.thumb_url &&
+                this.text      === this.editElement.text)
 
     }
 
     this.save =  function(){
+      this.saving = true;
       console.log('saving');
-
-      this.color    = this.editElement.color;
-      this.visible  = this.editElement.visible;
-      this.title    = this.editElement.title;
-      this.text     = this.editElement.text;
-
-      this.cancelEditForm();
+      this.saving = false;
+      return true;
     }
 
     this.destroy =  function(){
-      if(confirm('Deseja remover este post?')){
+      if(confirm('Deseja remover este article?')){
         console.log('destroing');
         this.cancelEditForm(true);
 
       }
     }
+
+    this.getTitleStyle = function(el){
+      if(el == undefined){el = this;}
+
+      styles = {};
+      styles['background-color'] = el.color;
+
+      if(el.thumb_url != undefined)
+        styles['background-image'] = 'url('+ el.thumb_url +')';
+
+      return styles
+    }
+
+    this.canEdit = function(){ return $rootScope.user && this.author && (this.author.id == $rootScope.user.id)}
+    this.canDestroy = function(){ return $rootScope.user && this.author && (this.author.id == $rootScope.user.id)}
+    this.canView = function(){ return !!this.text}
   }
 
 }])
 
-Post = {
+Article = {
 
 
 

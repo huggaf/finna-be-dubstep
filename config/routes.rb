@@ -4,7 +4,7 @@ FinnaBeDubstep::Application.routes.draw do
   delete 'logout' => "api/session#destroy", defaults: {format: :json}
   namespace :api, defaults: {format: :json} do
 
-    resources :posts, only: [:index, :create, :update, :destroy]
+    resources :articles, only: [:index, :create, :update, :destroy]
     resources :users, only: [:create] do
       collection do
         get   :me, action: "show"
@@ -16,7 +16,7 @@ FinnaBeDubstep::Application.routes.draw do
     end
   end
 
-  %w(posts new-post /recuperar/:reset_token /recuperar/:reset_token/cancelar).each do |url|
+  %w(articles new-article /recuperar/:reset_token /recuperar/:reset_token/cancelar).each do |url|
     get url => "application#default"
   end
 
@@ -40,7 +40,7 @@ FinnaBeDubstep::Application.routes.draw do
   #   resources :products do
   #     member do
   #       get 'short'
-  #       post 'toggle'
+  #       article 'toggle'
   #     end
   #
   #     collection do
@@ -64,9 +64,9 @@ FinnaBeDubstep::Application.routes.draw do
 
   # Example resource route with concerns:
   #   concern :toggleable do
-  #     post 'toggle'
+  #     article 'toggle'
   #   end
-  #   resources :posts, concerns: :toggleable
+  #   resources :articles, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:

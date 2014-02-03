@@ -8,7 +8,7 @@ var LoginCtrl = ["$scope", "$rootScope", "UserResource", "SessionResource", func
   $scope.messages = [];
 
   $scope.logout = function(){
-    if($rootScope.posts.every(function(e){return e.unselect()})){
+    if($rootScope.articles.every(function(e){return e.unselect()})){
       SessionResource.logout(function(){
         $rootScope.user = null;
       })

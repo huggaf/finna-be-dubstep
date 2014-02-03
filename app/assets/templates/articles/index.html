@@ -1,0 +1,10 @@
+<section ng-controller="ArticlesCtrl" when-scrolled="nextPage()">
+
+  <section class="article" ng-class="{'selected':article.selected}" ng-repeat="article in articles" ng-include="template(article)"></section>
+
+  <div ng-show="loadMore">
+    <button ng-hide="loadingArticles" class="btn btn-block btn-lg btn-info" ng-click="nextPage()">Carregar mais</button>
+    <div ng-show="loadingArticles" class="text-center"><img src="/assets/loading.gif"> Carregando...</div>
+  </div>
+</section>
+

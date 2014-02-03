@@ -1,0 +1,35 @@
+    <form ng-submit="save(article)">
+      <div class="title" ng-style="article.getTitleStyle(article.editElement)">
+
+        <div class="edit-btn-container quick-effect">
+          <i ng-click="save(article)"                class="edit-btn effect glyphicon glyphicon-ok" ></i>
+          <i ng-click="article.cancelEditForm()" class="edit-btn effect glyphicon glyphicon-remove"></i>
+          <i ng-click="article.destroy()"        class="edit-btn effect glyphicon glyphicon-trash"></i>
+        </div>
+
+        <p>
+          <label for="article-edit-title" class="sr-only">Título</label>
+          <input type="text" id="article-edit-title" ng-model="article.editElement.title" class="form-control" placeholder="Título">
+        </p>
+
+        <p>
+          <label for="article-edit-url-thumb" class="sr-only">Url Thumb</label>
+          <input type="text" id="article-edit-url-thumb" ng-model="article.editElement.thumb_url" class="form-control" placeholder="Url Thumb">
+        </p>
+      </div>
+
+      <div class="content quick-effect">
+        <div class="toolbar" ng-show="user.id == article.author.id">
+
+          <div class="tools" ng-show="article.edit">
+            <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="article.editElement.color = color"></i>
+          </div>
+
+        </div>
+
+        <textarea class="form-control" ng-model="article.editElement.text"></textarea>
+        <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">Sintaxe do markdown</a>
+      </div>
+
+      <button class="sr-only">Salvar</button>
+    </form>
