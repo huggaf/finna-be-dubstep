@@ -1,3 +1,4 @@
+// convert markdown to html {{myMarkdownText|markdown}}
 myBlogApp.filter('markdown', ['$sce', function($sce) {
   return function (txt) {
     var converter = new Showdown.converter();

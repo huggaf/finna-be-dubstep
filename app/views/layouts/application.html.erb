@@ -2,11 +2,12 @@
 <html ng-app="myBlogApp">
 <head>
   <meta charset="utf-8">
+  <!-- evitar o zoom em dispositivos mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <meta name="description" content="Le Blog - Canal de notícias">
-  <meta name="author" content="Pablo Targa">
-  <meta name="keywords" content="blog,noticias,desafio">
-  <title>Blog</title>
+  <meta name="author" content="Pablo Targa <pablo.targa@gmail.com>">
+  <meta name="keywords" content="blog,noticias,desafio,teste">
+  <title>le Blog</title>
 
   <!-- le css -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -27,7 +28,7 @@
 </head>
 <body>
 
-  <!-- <section id="device"></section> -->
+  <!-- header, titulo, link para login, novo artigo e busca -->
   <header>
     <a href="#" title="Buscar"><i class="glyphicon glyphicon-search quick-effect"></i></a>
     <h1><a href="/">le Blog</a></h1>
@@ -35,6 +36,18 @@
     <a ng-hide="user" title="Entrar" alt="Entrar" href="#" ng-click="openLogin()"><i class="glyphicon glyphicon-log-in quick-effect"></i></a>
   </header>
 
+  <!-- feedback geral do sistema erros/sucessos -->
+  <div class="alert alert-danger" ng-repeat="error in errors">
+    <i class="glyphicon glyphicon-remove-sign"></i>
+    {{error}}
+  </div>
+
+  <div class="alert alert-success" ng-repeat="message in messages">
+    <i class="glyphicon glyphicon-ok-sign"></i>
+    <span ng-bind-html="message"></span>
+  </div>
+
+  <!-- formulário de busca: apenas filter nos artigos carregados, não dispara busca no banco -->
   <section class="search-form">
     <p>
       <input type="text" ng-model="search.text">
@@ -42,18 +55,9 @@
     </p>
   </section>
 
-  <section id="login-form" ng-controller="LoginCtrl">
+  <!-- login -->
+  <section id="login-form" ng-controller="LoginCtrl" class="well" ng-show="user || showLogin">
     <form ng-submit="sendForm()" ng-hide="user || !showLogin">
-      <div class="alert alert-danger" ng-repeat="error in errors">
-        <i class="glyphicon glyphicon-remove-sign"></i>
-        {{error}}
-      </div>
-
-      <div class="alert alert-success" ng-repeat="message in messages">
-        <i class="glyphicon glyphicon-ok-sign"></i>
-        <span ng-bind-html="message"></span>
-      </div>
-
       <p ng-show="login.type == 'signin'">
         <label class="sr-only" for="login-name">Nome:</label>
         <input class="form-control" placeholder="Nome" id="login-name" type="text" ng-model="login.name">
@@ -81,19 +85,20 @@
         <span class="link" ng-click="login.type = 'login'"    ng-show="login.type == 'remember'">Acho que lembrei!</span>
       </p>
 
-
+      <!-- botão e feedback de loading, utilização da tranca para o feedback -->
       <p>
         <button ng-hide="logging" class="btn btn-block btn-lg btn-info" ng-bind="btnTexts[login.type]"></button>
-        <div ng-show="logging" class="text-center"><img src="/assets/loading.gif"> Carregando...</div>
+        <div ng-show="logging" class="text-center"><img src="/assets/loading-gray.gif"> Carregando...</div>
       </p>
     </form>
 
-
+    <!-- informação do usuário logado -->
     <div class="credential-info" ng-show="user">
       Bem vindo {{user.name}}, <a href="#" ng-click="logout()">sair</a>
     </div>
   </section>
 
+  <!-- views do sistema, carregadas pelo ng-view do angular -->
   <section ng-view></section>
 
   <!-- le javascript -->

@@ -1,18 +1,27 @@
     <div class="title" ng-style="article.getTitleStyle()">
 
+      <!-- menu de ações do artigo -->
       <div class="edit-btn-container quick-effect">
-        <i                             ng-click="article.toggleSelect()" class="edit-btn effect glyphicon" ng-class="{'glyphicon-eye-open': !article.selected,'glyphicon-eye-close': article.selected}"></i>
+        <i                                ng-click="article.toggleSelect()" class="edit-btn effect glyphicon" ng-class="{'glyphicon-eye-open': !article.selected,'glyphicon-eye-close': article.selected}"></i>
         <i ng-show="article.canEdit()"    ng-click="article.editForm()"     class="edit-btn effect glyphicon glyphicon-edit"></i>
-        <i ng-show="article.canDestroy()" ng-click="article.destroy()"      class="edit-btn effect glyphicon glyphicon-trash"></i>
+        <i ng-show="article.canDestroy()" ng-click="destroy(article)"       class="edit-btn effect glyphicon glyphicon-trash"></i>
       </div>
 
+      <!-- abre/fecha o conteúdo -->
       <h1 ng-click="article.toggleSelect()" ng-bind="article.title"></h1>
 
-      <div class="author effect">
+      <div class="author">
         <span class="info">&dash; {{article.author.name}} em <span title="{{article.created_at|date:'dd/MM/yyyy HH:mm:ss'}}">{{article.created_at|date:'dd/MM/yyyy'}}</span></span>
       </div>
     </div>
 
     <div class="content quick-effect">
+      <!-- feedback para o usuário -->
+      <div class="alert alert-success" ng-repeat="message in article.messages">
+        <i class="glyphicon glyphicon-ok-sign"></i>
+        <span ng-bind-html="message"></span>
+      </div>
+
+      <!-- markdown... no pc o markdown ja é carregado quando o artigo entra na listagem, sem grandes perdas performance -->
       <div class="text" ng-bind-html="(article.text||'')|markdown"></div>
     </div>

@@ -1,0 +1,10 @@
+<section ng-controller="UsersCtrl" class="text-center" ng-init="cancelToken();">
+  <div ng-show="canceling">
+    <img src="/assets/loading.gif" /> Cancelando token..
+  </div>
+
+  <div class="well text-center" ng-hide="canceling">
+    <a href="/">Voltar para listagem</a>
+  </div>
+</section>
+

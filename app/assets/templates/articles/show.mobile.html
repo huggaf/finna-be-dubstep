@@ -1,11 +1,13 @@
     <div class="title" ng-style="article.getTitleStyle()">
 
+      <!-- menu de ações do artigo -->
       <div class="edit-btn-container quick-effect">
-        <i                             ng-click="article.toggleSelect()" class="edit-btn effect glyphicon" ng-class="{'glyphicon-eye-open': !article.selected,'glyphicon-eye-close': article.selected}"></i>
+        <i                                ng-click="article.toggleSelect()" class="edit-btn effect glyphicon" ng-class="{'glyphicon-eye-open': !article.selected,'glyphicon-eye-close': article.selected}"></i>
         <i ng-show="article.canEdit()"    ng-click="article.editForm()"     class="edit-btn effect glyphicon glyphicon-edit"></i>
-        <i ng-show="article.canDestroy()" ng-click="article.destroy()"      class="edit-btn effect glyphicon glyphicon-trash"></i>
+        <i ng-show="article.canDestroy()" ng-click="destroy(article)"       class="edit-btn effect glyphicon glyphicon-trash"></i>
       </div>
 
+      <!-- abre/fecha o conteúdo -->
       <h1 ng-click="article.toggleSelect()" ng-bind="article.title"></h1>
 
       <div class="author effect">
@@ -14,5 +16,12 @@
     </div>
 
     <div class="content">
+      <!-- feedback para o usuário -->
+      <div class="alert alert-success" ng-repeat="message in article.messages">
+        <i class="glyphicon glyphicon-ok-sign"></i>
+        <span ng-bind-html="message"></span>
+      </div>
+
+      <!-- markdown... mobile_text é carregado apenas quando o conteúdo é aberto, performance em dispositivos mobile -->
       <div class="text" ng-bind-html="(article.mobile_text||'')|markdown"></div>
     </div>

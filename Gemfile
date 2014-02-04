@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 
 # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'foreigner'
+  gem 'redis', '3.0.4'
 
 # Serialization
   gem 'oj'
@@ -12,7 +14,6 @@ source 'https://rubygems.org'
 
 # Use SCSS for stylesheets
   gem 'sass-rails', '~> 4.0.0'
-
 
 # Use Uglifier as compressor for JavaScript assets
 # gem 'uglifier', '>= 1.3.0'
@@ -42,6 +43,8 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
+# gem 'rainbows-rails'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

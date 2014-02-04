@@ -50,8 +50,14 @@ blockquote{
   -webkit-transition: all 1.5s ease-in-out;
   -o-transition:      all 1.5s ease-in-out;
 }
+
 .search-form{
   display:none;
+}
+
+.well .controls button,
+.well .controls a{
+  margin-right:10px;
 }
 
 header{
@@ -87,9 +93,6 @@ header{
   i.glyphicon-plus{ margin-left:200px; }
   i.glyphicon-log-in{ margin-left:200px; }
 
-/*  i.glyphicon:first-of-type{ margin-right:200px; }
-  i.glyphicon:last-of-type{ margin-left: 200px; }
-*/
 }
 
 #login-form{
@@ -109,7 +112,7 @@ header{
 }
 
 section.article{
-  border-radius: 10px;
+  border-radius: 4px;
   margin-bottom: 20px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
@@ -153,25 +156,32 @@ section.article{
       position: relative;
       font-size: 18px;
       top:-160px;
-      left:-10px;
+      left:10px;
+      text-align: right;
+
+      i.glyphicon-ok{ color: #5cb85c;}
+      i.glyphicon-remove{ color: #d9534f ;}
+
+      i.edit-btn{
+        cursor: pointer;
+        display: inline-block;
+        padding:5px;
+        background-color: white;
+        border-radius: 4px;
+        border:none;
+        opacity: 0.5;
+      }
+
+      i.edit-btn:hover{
+        opacity: 1.0;
+      }
     }
 
-    i.glyphicon-ok{ color: #5cb85c;}
-    i.glyphicon-remove{ color: #d9534f ;}
+  }
 
-    i.edit-btn{
-      cursor: pointer;
-      display: inline-block;
-      padding:5px;
-      background-color: white;
-      border-radius: 6px;
-      border:none;
-      opacity: 0.5;
-    }
-
-    i.edit-btn:hover{
-      opacity: 1.0;
-    }
+  form div.title .edit-btn-container{
+    top:-10px;
+    i.edit-btn{opacity: 1.0;}
   }
 
   div.content{
@@ -179,6 +189,10 @@ section.article{
     text-align: justify;
     max-height:0px;
     overflow: hidden;
+
+    div.alert{
+      margin-top:20px;
+    }
 
     div.text{
       padding-top: 10px;

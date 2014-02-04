@@ -1,4 +1,4 @@
-
+// diretiva que controla o scroll do mouse ao se aproximar do final da página
 myBlogApp.directive('whenScrolled', ['$window', function($window) {
     return function(scope, elm, attr) {
         var raw = elm[0];

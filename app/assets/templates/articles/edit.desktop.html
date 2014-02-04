@@ -1,12 +1,15 @@
+    <!-- formulário igual para desktop e mobile (ln -s edit.desktop.html edit.mobile.html) -->
     <form ng-submit="save(article)">
       <div class="title" ng-style="article.getTitleStyle(article.editElement)">
 
+        <!-- menu de ações do artigo -->
         <div class="edit-btn-container quick-effect">
-          <i ng-click="save(article)"                class="edit-btn effect glyphicon glyphicon-ok" ></i>
-          <i ng-click="article.cancelEditForm()" class="edit-btn effect glyphicon glyphicon-remove"></i>
-          <i ng-click="article.destroy()"        class="edit-btn effect glyphicon glyphicon-trash"></i>
+          <i ng-click="save(article)"            class="edit-btn effect glyphicon glyphicon-ok" ></i>
+          <i ng-click="article.closeEditForm()"  class="edit-btn effect glyphicon glyphicon-remove"></i>
+          <i ng-click="destroy(article)"         class="edit-btn effect glyphicon glyphicon-trash"></i>
         </div>
 
+        <!-- campos do div.title (titulo e img esquerda) -->
         <p>
           <label for="article-edit-title" class="sr-only">Título</label>
           <input type="text" id="article-edit-title" ng-model="article.editElement.title" class="form-control" placeholder="Título">
@@ -18,18 +21,27 @@
         </p>
       </div>
 
-      <div class="content quick-effect">
+      <div class="content">
         <div class="toolbar" ng-show="user.id == article.author.id">
 
-          <div class="tools" ng-show="article.edit">
-            <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="article.editElement.color = color"></i>
+          <div class="tools">
+            <!-- cores para classificação -->
+            <i class="glyphicon glyphicon-tint" ng-style="{'color':color}" ng-repeat="color in colors" ng-click="article.editElement.color = color"></i>
+          </div>
+
+          <!-- feedback de erros ao tentar salvar registro inválido -->
+          <div class="alert alert-danger" ng-repeat="error in article.errors">
+            <i class="glyphicon glyphicon-remove-sign"></i>
+            {{error}}
           </div>
 
         </div>
 
+        <!-- text do artgio, pensei em colocar um wysiwyg mas optei por utilizar markdown, segue manual da sintaxe -->
         <textarea class="form-control" ng-model="article.editElement.text"></textarea>
         <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">Sintaxe do markdown</a>
       </div>
 
+      <!-- botão escondido para funcionalidade de enter = submit. Screen Reader Only -->
       <button class="sr-only">Salvar</button>
     </form>

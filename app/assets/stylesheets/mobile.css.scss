@@ -3,6 +3,7 @@
 @media (max-width: 480px) {
   #device{background-color: purple }
 
+  .well{border-radius:0}
   .effect{
     transition:         none;
     -moz-transition:    none;
@@ -68,7 +69,12 @@
 
     div.title{
       padding:20px;
-      div.edit-btn-container{ top:-10px; }
+      div.edit-btn-container{
+        top:-10px;
+
+        i.edit-btn{opacity: 1;}
+
+      }
 
       h1{
         cursor: pointer;

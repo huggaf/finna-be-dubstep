@@ -1,8 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  # protect_from_forgery with: :exception
-
   before_filter :restrict_access
   skip_before_filter :restrict_access, only: [:default]
 
@@ -22,7 +18,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def restrict_access
-    head :unauthorized unless current_user.present?
+    render json: {errors: ["Acesso restrito, informe usuário e senha"]}, status: :unauthorized unless current_user.present?
   end
 
 end

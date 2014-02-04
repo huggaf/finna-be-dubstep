@@ -46,20 +46,26 @@ class Api::UsersController < ApplicationController
     attributes = params.require(:user).permit(:password, :password_confirmation)
     user = User.where(reset_token: params[:reset_token]).first
 
-    if user.present? and user.reset_due.furure?
-      user.update_attributes(attributes.slice(:password,:password_confirmation))
-      if user.persisted?
+    if user.present? and user.reset_due.future? and attributes[:password].present?
+
+      user.password              = attributes[:password]
+      user.password_confirmation = attributes[:password_confirmation]
+      user.reset_token           = nil
+      user.reset_due             = nil
+
+      if user.save
         session[:user_id] = user.id
         render json: Oj.dump(UserSerializer.new(user))
       else
         render json: Oj.dump(UserSerializer.new(user)), status: :unprocessable_entity
       end
     else
-      head :forbidden
+      render json: {errors: ["Token não encontrada ou inválida"]}, status: :forbidden
     end
   end
 
   def cancel_reset_password_token
+    sleep(5)
     user = User.where(reset_token: params[:reset_token]).first
     if user.present?
       user.update_attributes(reset_token: nil, reset_due: nil);

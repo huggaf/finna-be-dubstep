@@ -1,11 +1,14 @@
   <section class="article selected" ng-controller="NewArticleCtrl">
     <form ng-submit="save()">
       <div class="title" ng-style="article.getTitleStyle()">
+
+        <!-- menu de ações do artigo -->
         <div class="edit-btn-container quick-effect">
-          <i ng-click="save()"           class="edit-btn effect glyphicon glyphicon-ok" ></i>
+          <i ng-click="save()"    class="edit-btn effect glyphicon glyphicon-ok" ></i>
           <i ng-click="cancel();" class="edit-btn effect glyphicon glyphicon-remove"></i>
         </div>
 
+        <!-- campos do div.title (titulo e img esquerda) -->
         <p>
           <label class="sr-only" for="new-article-title">Título:</label>
           <input placeholder="Título" id="new-article-title" type="text" ng-model="article.title" class="form-control">
@@ -22,12 +25,14 @@
         <div class="toolbar">
 
           <div class="tools">
+            <!-- cores para classificação -->
             <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="article.color = color"></i>
           </div>
 
         </div>
 
         <div>
+          <!-- text do artgio, pensei em colocar um wysiwyg mas optei por utilizar markdown, segue manual da sintaxe -->
           <label class="sr-only" for="new-article-text">Texto:</label>
           <textarea placeholder="Texto" id="new-article-text" class="form-control" ng-model="article.text"></textarea>
           <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">Sintaxe do markdown</a>
@@ -35,6 +40,7 @@
 
       </div>
 
+      <!-- botão escondido para funcionalidade de enter = submit. Screen Reader Only -->
       <button class="sr-only">Salvar</button>
     </form>
   </section>
