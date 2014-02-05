@@ -271,12 +271,27 @@ section.article:hover{
 #device{ display: block;height:20px;width: 40px;background-color: #BBB }
 
 /* Large desktop */
-@media (min-width: 979px) {
-  #device{ background-color: red }
-  body{
-    padding:30px 200px;
+
+/*@media (min-width: 979px) {*/
+@media (min-width: 490px) and (max-width: 889px) {
+  body{ padding:30px 10px; }
+  header{
+    i.glyphicon-search{ margin-right:50px; }
+    i.glyphicon-plus{ margin-left:50px; }
+    i.glyphicon-log-in{ margin-left:50px; }
+
   }
 }
+
+@media (min-width: 890px) and (max-width: 1268px) {
+  body{ padding:30px 0; }
+  section.article,#login-form,.search-form{width: 814px;margin: 10px auto;}
+}
+
+@media (min-width: 1268px) {
+  body{ padding:30px 200px; }
+}
+
 
 /* Large desktop */
 /*@media (min-width:979px) and (max-width:1024px) {
