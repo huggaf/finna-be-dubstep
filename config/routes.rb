@@ -20,7 +20,7 @@ FinnaBeDubstep::Application.routes.draw do
     resources :articles, only: [:index]
   end
 
-  %w(articles new-article /recuperar/:reset_token /recuperar/:reset_token/cancelar).each do |url|
+  %w(artigos novo-artigo /recuperar/:reset_token /recuperar/:reset_token/cancelar).each do |url|
     get url => "application#default"
   end
 

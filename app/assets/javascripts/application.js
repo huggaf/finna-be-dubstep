@@ -26,12 +26,12 @@ var myBlogApp = angular.module('myBlogApp', ['ngSanitize', 'ngResource', 'ngRout
   $locationProvider.html5Mode(true);
 
   // angular routes
-  $routeProvider.when("/articles", {templateUrl: "/assets/articles/index.html", controller: ArticlesCtrl})
-      .when("/new-article", {templateUrl: "/assets/articles/new.html"})
+  $routeProvider.when("/artigos", {templateUrl: "/assets/articles/index.html", controller: ArticlesCtrl})
+      .when("/novo-artigo", {templateUrl: "/assets/articles/new.html"})
       .when("/recuperar/:reset_token", {templateUrl: "/assets/users/reset_password.html"})
       .when("/recuperar/:reset_token/cancelar", {templateUrl: "/assets/users/cancel_token.html"})
 
-      .otherwise({redirectTo : '/articles' });
+      .otherwise({redirectTo : '/artigos' });
 
   // json header
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json';
