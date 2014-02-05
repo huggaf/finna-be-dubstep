@@ -60,9 +60,19 @@ myBlogApp.run(['$rootScope', '$sse', 'UserResource', 'Article', function($rootSc
         return check;
     })();
 
+  if($rootScope.isMobile)
+    $rootScope.showSearch = true;
+
   // toggle do form de login/signin/lembrar a senha
   $rootScope.openLogin = function(){
     $rootScope.showLogin = !$rootScope.showLogin;
+  }
+
+  $rootScope.openSearch = function(){
+    if($rootScope.showSearch)
+      $rootScope.search = "";
+
+    $rootScope.showSearch = !$rootScope.showSearch;
   }
 
   // procura o id e remove da lista
@@ -77,7 +87,7 @@ myBlogApp.run(['$rootScope', '$sse', 'UserResource', 'Article', function($rootSc
       article = new Article(data);
 
       // caso seja o autor não exibir na lista de novos artigos
-      if($rootScope.user && $rootScope.user.id != data.author_id){
+      if(!$rootScope.user || ($rootScope.user && $rootScope.user.id != data.author_id)){
         article.new = true;
         $rootScope.hasNewArticles = true;
       }

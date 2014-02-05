@@ -4,7 +4,7 @@
   <button ng-show="hasNewArticles" ng-click="showNewArticles()" class="btn btn-info btn-block btn-lg">Novos Artigos</button>
 
   <!-- lista de artigos -->
-  <section id="article-{{article.id}}" class="article" ng-class="{'selected':article.selected}" ng-repeat="article in articles" ng-include="template(article)" ng-hide="article.new"></section>
+  <section id="article-{{article.id}}" class="article" ng-class="{'selected':article.selected}" ng-repeat="article in articles | filter:search" ng-include="template(article)" ng-hide="article.new"></section>
 
   <!-- botão para carregar mais e feedback que o sistema está carregando -->
   <div ng-show="loadMore">

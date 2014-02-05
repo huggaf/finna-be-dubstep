@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Autor
+    attributes:
+      user:
+        name: "Nome"
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação"
+      article:
+        title: "Título"
+        thumb_url: "Imagem"
+        text: "Texto"
+        created_at: "Criado em"
+        author: "Autor"

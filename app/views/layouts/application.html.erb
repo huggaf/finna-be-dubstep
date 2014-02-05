@@ -28,33 +28,6 @@
 </head>
 <body>
 
-  <!-- header, titulo, link para login, novo artigo e busca -->
-  <header>
-    <a href="#" title="Buscar"><i class="glyphicon glyphicon-search quick-effect"></i></a>
-    <h1><a href="/">le Blog</a></h1>
-    <a ng-show="user" title="Adicionar" alt="Adicionar" href="/new-article"><i class="glyphicon glyphicon-plus quick-effect"></i></a>
-    <a ng-hide="user" title="Entrar" alt="Entrar" href="#" ng-click="openLogin()"><i class="glyphicon glyphicon-log-in quick-effect"></i></a>
-  </header>
-
-  <!-- feedback geral do sistema erros/sucessos -->
-  <div class="alert alert-danger" ng-repeat="error in errors">
-    <i class="glyphicon glyphicon-remove-sign"></i>
-    {{error}}
-  </div>
-
-  <div class="alert alert-success" ng-repeat="message in messages">
-    <i class="glyphicon glyphicon-ok-sign"></i>
-    <span ng-bind-html="message"></span>
-  </div>
-
-  <!-- formulário de busca: apenas filter nos artigos carregados, não dispara busca no banco -->
-  <section class="search-form">
-    <p>
-      <input type="text" ng-model="search.text">
-      <i class="glyphicon glyphicon-tint" style="color:{{color}}" ng-repeat="color in colors" ng-click="search.color = color"></i>
-    </p>
-  </section>
-
   <!-- login -->
   <section id="login-form" ng-controller="LoginCtrl" class="well" ng-show="user || showLogin">
     <form ng-submit="sendForm()" ng-hide="user || !showLogin">
@@ -97,6 +70,37 @@
       Bem vindo {{user.name}}, <a href="#" ng-click="logout()">sair</a>
     </div>
   </section>
+
+
+  <!-- header, titulo, link para login, novo artigo e busca -->
+  <header>
+    <a class="search-button" href="#" title="Buscar" ng-click="openSearch()"><i class="glyphicon glyphicon-search quick-effect"></i></a>
+    <h1><a href="/">le Blog</a></h1>
+    <a ng-show="user" title="Adicionar" alt="Adicionar" href="/new-article"><i class="glyphicon glyphicon-plus quick-effect"></i></a>
+    <a ng-hide="user" title="Entrar" alt="Entrar" href="#" ng-click="openLogin()"><i class="glyphicon glyphicon-log-in quick-effect"></i></a>
+  </header>
+
+  <!-- feedback geral do sistema erros/sucessos -->
+  <div class="alert alert-danger" ng-repeat="error in errors">
+    <i class="glyphicon glyphicon-remove-sign"></i>
+    {{error}}
+  </div>
+
+  <div class="alert alert-success" ng-repeat="message in messages">
+    <i class="glyphicon glyphicon-ok-sign"></i>
+    <span ng-bind-html="message"></span>
+  </div>
+
+  <!-- formulário de busca: apenas filter nos artigos carregados, não dispara busca no banco -->
+  <section class="search-form" ng-show="showSearch">
+    <div class="input-group">
+      <input type="text" ng-model="search" class="form-control">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+      </span>
+    </div>
+  </section>
+
 
   <!-- views do sistema, carregadas pelo ng-view do angular -->
   <section ng-view></section>

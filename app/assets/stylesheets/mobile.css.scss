@@ -25,7 +25,6 @@
     -o-transition:      none;
   }
 
-
   .btn{border-radius: 0;}
 
   body{
@@ -33,20 +32,17 @@
   }
 
   header{
-    height:100px;
     h1{
       display: block;
-      left:0;
-      top: 30px;
-      width:100%;
-      position:absolute;
-      text-align: center
+      text-align: center;
+    }
+
+    a.search-button{
+      display: none;
     }
 
     a,i.glyphicon{
       display: inline-block;
-      /*position: absolute;*/
-      top: 70px;
       border-radius: 0;
       color: rgba(127,127,127,0.9);
       background-color: transparent;
@@ -55,7 +51,8 @@
       margin: 0;
     }
 
-    i.glyphicon:hover{
+    a,i.glyphicon:hover{
+      background-color: transparent;
       color: rgb(0,0,0);
     }
   }

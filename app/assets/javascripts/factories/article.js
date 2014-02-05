@@ -135,6 +135,9 @@ myBlogApp.factory('Article', ["$rootScope", "$location", "$anchorScroll", "$time
       this.text        = data.text;
       this.thumb_url   = data.thumb_url;
       this.color       = data.color;
+
+      if($rootScope.isMobile)
+        this.mobile_text = data.text;
     }
 
     // permissões a nivel de front-end para exibir ou não os botões de ação
