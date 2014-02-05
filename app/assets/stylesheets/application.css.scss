@@ -67,7 +67,7 @@ blockquote{
 }
 
 .search-form{
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .well .controls button,
@@ -285,7 +285,7 @@ section.article:hover{
 
 @media (min-width: 890px) and (max-width: 1268px) {
   body{ padding:30px 0; }
-  section.article,#login-form,.search-form{width: 814px;margin: 10px auto;}
+  section.article,#login-form,.search-form{width: 814px;margin: 0 auto;margin-bottom:20px;}
 }
 
 @media (min-width: 1268px) {

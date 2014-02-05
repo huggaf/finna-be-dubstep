@@ -1,8 +1,14 @@
 
 /* Landscape phones and down */
 @media (max-width: 489px) {
-  #device{background-color: purple }
 
+  .search-form{
+    .input-group{
+      *{
+        border-radius: 0;
+      }
+    }
+  }
   .well{border-radius:0}
   .effect{
     transition:         none;
